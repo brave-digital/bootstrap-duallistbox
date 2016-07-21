@@ -1,5 +1,5 @@
 {
-	"name": "bootstrap-duallistbox",
+	"name": "material-duallistbox",
 	"version": "3.0.6",
 	"homepage": "http://www.virtuosoft.eu/code/bootstrap-duallistbox/",
 	"authors": [
@@ -10,8 +10,7 @@
 	],
 	"description": "A responsive dual listbox widget optimized for Twitter Bootstrap. It works on all modern browsers and on touch devices.",
 	"main": [
-	  "src/jquery.bootstrap-duallistbox.js",
-	  "src/bootstrap-duallistbox.css"
+	  "src/jquery.bootstrap-duallistbox.js"
   ],
   "dependencies": {
     "jquery": "~2.0.3"
