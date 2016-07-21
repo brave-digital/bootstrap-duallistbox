@@ -8,7 +8,7 @@ Check the [official website](http://www.virtuosoft.eu/code/bootstrap-duallistbox
 1. Download the latest tag from the [releases page](https://github.com/istvan-ujjmeszaros/bootstrap-duallistbox/releases) or get it via **bower**:
 
 ```shell
-$ bower install bootstrap-duallistbox
+$ bower install material-duallistbox
 ```
 
 2. Include **jQuery** and **Bootstrap**:

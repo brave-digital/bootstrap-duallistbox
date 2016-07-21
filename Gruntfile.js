@@ -3,7 +3,7 @@ module.exports = function (grunt) {
   grunt.initConfig({
 
     // Import package manifest
-    pkg: grunt.file.readJSON("bootstrap-duallistbox.jquery.json"),
+    // pkg: grunt.file.readJSON("bootstrap-duallistbox.jquery.json"),
 
     // Banner definitions
     meta: {
@@ -20,21 +20,21 @@ module.exports = function (grunt) {
     // Concat definitions
     concat: {
       js: {
-        src: ["src/jquery.bootstrap-duallistbox.js"],
-        dest: "dist/jquery.bootstrap-duallistbox.js"
+        src: ["src/material-duallistbox.js"],
+        dest: "dist/material-duallistbox.js"
       },
       css: {
-        src: ["src/bootstrap-duallistbox.css"],
-        dest: "dist/bootstrap-duallistbox.css"
+        src: ["src/material-duallistbox.css"],
+        dest: "dist/material-duallistbox.css"
       },
-      options: {
-        banner: "<%= meta.banner %>"
-      }
+      // options: {
+      //   banner: "<%= meta.banner %>"
+      // }
     },
 
     // Lint definitions
     jshint: {
-      files: ["src/jquery.bootstrap-duallistbox.js"],
+      files: ["src/material-duallistbox.js"],
       options: {
         jshintrc: ".jshintrc"
       }
@@ -43,22 +43,22 @@ module.exports = function (grunt) {
     // Minify definitions
     uglify: {
       js: {
-        src: ["dist/jquery.bootstrap-duallistbox.js"],
-        dest: "dist/jquery.bootstrap-duallistbox.min.js"
+        src: ["dist/material-duallistbox.js"],
+        dest: "dist/material-duallistbox.min.js"
       },
-      options: {
-        banner: "<%= meta.banner %>"
-      }
+      // options: {
+      //   banner: "<%= meta.banner %>"
+      // }
     },
 
     cssmin: {
       css: {
-        src: ["dist/bootstrap-duallistbox.css"],
-        dest: "dist/bootstrap-duallistbox.min.css"
+        src: ["dist/material-duallistbox.css"],
+        dest: "dist/material-duallistbox.min.css"
       },
-      options: {
-        banner: "<%= meta.banner %>"
-      }
+      // options: {
+      //   banner: "<%= meta.banner %>"
+      // }
     }
 
   });
@@ -69,6 +69,5 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks("grunt-contrib-cssmin");
 
   grunt.registerTask("default", ["jshint", "concat", "uglify", "cssmin"]);
-  grunt.registerTask("travis", ["jshint"]);
 
 };
