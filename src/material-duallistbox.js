@@ -1,8 +1,8 @@
 ;(function ($, window, document, undefined) {
   // Create the defaults once
-  var pluginName = 'bootstrapDualListbox',
+  var pluginName = 'materialDualListbox',
     defaults = {
-      bootstrap2Compatible: false,
+      material2Compatible: false,
       filterTextClear: 'show all',
       filterPlaceHolder: 'Filter',
       moveSelectedLabel: 'Move selected',
@@ -305,7 +305,7 @@
       }
     });
 
-    dualListbox.element.on('bootstrapDualListbox.refresh', function(e, mustClearSelections){
+    dualListbox.element.on('materialDualListbox.refresh', function(e, mustClearSelections){
       dualListbox.refresh(mustClearSelections);
     });
 
@@ -354,42 +354,42 @@
     init: function () {
       // Add the custom HTML template
       this.container = $('' +
-        '<div class="bootstrap-duallistbox-container">' +
-        ' <div class="box1">' +
+        '<div class="material-duallistbox-container" layout="row">' +
+        ' <div class="box1" flex="50">' +
         '   <label></label>' +
+        '   <select multiple="multiple"></select>' +
         '   <span class="info-container">' +
         '     <span class="info"></span>' +
-        '     <button type="button" class="btn clear1 pull-right"></button>' +
+        '     <button type="button" class="md-no-style md-button  md-ink-ripple clear1 pull-right"></button>' +
         '   </span>' +
         '   <input class="filter" type="text">' +
         '   <div class="btn-group buttons">' +
-        '     <button type="button" class="btn moveall">' +
-        '       <i></i>' +
-        '       <i></i>' +
+        '     <button type="button" class="md-no-style md-button  md-ink-ripple moveall">' +
+        '       <span class="md-caret md-left-caret" aria-hidden="true"></span>' +
+        '       <span class="md-caret md-left-caret" aria-hidden="true"></span>' +
         '     </button>' +
-        '     <button type="button" class="btn move">' +
-        '       <i></i>' +
+        '     <button type="button" class="md-no-style md-button  md-ink-ripple move">' +
+        '       <span class="md-caret md-left-caret" aria-hidden="true"></span>' +
         '     </button>' +
         '   </div>' +
-        '   <select multiple="multiple"></select>' +
         ' </div>' +
-        ' <div class="box2">' +
+        ' <div class="box2" flex="50">' +
         '   <label></label>' +
+        '   <select multiple="multiple"></select>' +
         '   <span class="info-container">' +
         '     <span class="info"></span>' +
-        '     <button type="button" class="btn clear2 pull-right"></button>' +
+        '     <button type="button" class="md-no-style md-button  md-ink-ripple clear2 pull-right"></button>' +
         '   </span>' +
         '   <input class="filter" type="text">' +
         '   <div class="btn-group buttons">' +
-        '     <button type="button" class="btn remove">' +
-        '       <i></i>' +
+        '     <button type="button" class="md-no-style md-button  md-ink-ripple remove">' +
+        '       <span class="md-caret md-right-caret" aria-hidden="true"></span>' +
         '     </button>' +
-        '     <button type="button" class="btn removeall">' +
-        '       <i></i>' +
-        '       <i></i>' +
+        '     <button type="button" class="md-no-style md-button md-ink-ripple removeall">' +
+        '       <span class="md-caret md-right-caret" aria-hidden="true"></span>' +
+        '       <span class="md-caret md-right-caret" aria-hidden="true"></span>' +
         '     </button>' +
         '   </div>' +
-        '   <select multiple="multiple"></select>' +
         ' </div>' +
         '</div>')
         .insertBefore(this.element);
@@ -418,8 +418,8 @@
 
       // Set select IDs
       this.originalSelectName = this.element.attr('name') || '';
-      var select1Id = 'bootstrap-duallistbox-nonselected-list_' + this.originalSelectName,
-        select2Id = 'bootstrap-duallistbox-selected-list_' + this.originalSelectName;
+      var select1Id = 'material-duallistbox-nonselected-list_' + this.originalSelectName,
+        select2Id = 'material-duallistbox-selected-list_' + this.originalSelectName;
       this.elements.select1.attr('id', select1Id);
       this.elements.select2.attr('id', select2Id);
       this.elements.label1.attr('for', select1Id);
@@ -429,7 +429,7 @@
       this.selectedElements = 0;
       this.sortIndex = 0;
       this.elementCount = 0;
-      this.setBootstrap2Compatible(this.settings.bootstrap2Compatible);
+      this.setBootstrap2Compatible(this.settings.material2Compatible);
       this.setFilterTextClear(this.settings.filterTextClear);
       this.setFilterPlaceHolder(this.settings.filterPlaceHolder);
       this.setMoveSelectedLabel(this.settings.moveSelectedLabel);
@@ -467,24 +467,24 @@
       return this.element;
     },
     setBootstrap2Compatible: function(value, refresh) {
-      this.settings.bootstrap2Compatible = value;
-      if (value) {
-        this.container.removeClass('row').addClass('row-fluid bs2compatible');
-        this.container.find('.box1, .box2').removeClass('col-md-6').addClass('span6');
-        this.container.find('.clear1, .clear2').removeClass('btn-default btn-xs').addClass('btn-mini');
-        this.container.find('input, select').removeClass('form-control');
-        this.container.find('.btn').removeClass('btn-default');
-        this.container.find('.moveall > i, .move > i').removeClass('glyphicon glyphicon-arrow-right').addClass('icon-arrow-right');
-        this.container.find('.removeall > i, .remove > i').removeClass('glyphicon glyphicon-arrow-left').addClass('icon-arrow-left');
-      } else {
-        this.container.removeClass('row-fluid bs2compatible').addClass('row');
-        this.container.find('.box1, .box2').removeClass('span6').addClass('col-md-6');
-        this.container.find('.clear1, .clear2').removeClass('btn-mini').addClass('btn-default btn-xs');
-        this.container.find('input, select').addClass('form-control');
-        this.container.find('.btn').addClass('btn-default');
-        this.container.find('.moveall > i, .move > i').removeClass('icon-arrow-right').addClass('glyphicon glyphicon-arrow-right');
-        this.container.find('.removeall > i, .remove > i').removeClass('icon-arrow-left').addClass('glyphicon glyphicon-arrow-left');
-      }
+      this.settings.material2Compatible = value;
+      // if (value) {
+      //   this.container.removeClass('row').addClass('row-fluid bs2compatible');
+      //   this.container.find('.box1, .box2').removeClass('col-md-6').addClass('span6');
+      //   this.container.find('.clear1, .clear2').removeClass('btn-default btn-xs').addClass('btn-mini');
+      //   this.container.find('input, select').removeClass('form-control');
+      //   this.container.find('.btn').removeClass('btn-default');
+      //   this.container.find('.moveall > i, .move > i').removeClass('glyphicon glyphicon-arrow-right').addClass('icon-arrow-right');
+      //   this.container.find('.removeall > i, .remove > i').removeClass('glyphicon glyphicon-arrow-left').addClass('icon-arrow-left');
+      // } else {
+      //   this.container.removeClass('row-fluid bs2compatible').addClass('row');
+      //   this.container.find('.box1, .box2').removeClass('span6').addClass('col-md-6');
+      //   this.container.find('.clear1, .clear2').removeClass('btn-mini').addClass('btn-default btn-xs');
+      //   this.container.find('input, select').addClass('form-control');
+      //   this.container.find('.btn').addClass('btn-default');
+      //   this.container.find('.moveall > i, .move > i').removeClass('icon-arrow-right').addClass('glyphicon glyphicon-arrow-right');
+      //   this.container.find('.removeall > i, .remove > i').removeClass('icon-arrow-left').addClass('glyphicon glyphicon-arrow-left');
+      // }
       if (refresh) {
         refreshSelects(this);
       }
@@ -761,7 +761,7 @@
         if (!$(this).is('select')) {
           $(this).find('select').each(function(index, item) {
             // For each nested select, instantiate the Dual List Box
-            $(item).bootstrapDualListbox(options);
+            $(item).materialDualListbox(options);
           });
         } else if (!$.data(this, 'plugin_' + pluginName)) {
           // Only allow the plugin to be instantiated once so we check that the element has no plugin instantiation yet
