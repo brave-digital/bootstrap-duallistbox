@@ -10,7 +10,8 @@
 	],
 	"description": "A responsive dual listbox widget optimized for Twitter Bootstrap. It works on all modern browsers and on touch devices.",
 	"main": [
-	  "src/material-duallistbox.js"
+	  "src/material-duallistbox.js",
+		"src/material-duallistbox.css"
   ],
   "dependencies": {
     "jquery": "~2.0.3"
