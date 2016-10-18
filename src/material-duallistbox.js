@@ -354,8 +354,8 @@
     init: function () {
       // Add the custom HTML template
       this.container = $('' +
-        '<div class="material-duallistbox-container" layout="row">' +
-        ' <div class="box1" flex="50">' +
+        '<div class="material-duallistbox-container layout-row" layout="row">' +
+        ' <div class="box1 flex-50" flex="50">' +
         '   <label></label>' +
         '   <select multiple="multiple"></select>' +
         '   <span class="info-container">' +
@@ -373,7 +373,7 @@
         '     </button>' +
         '   </div>' +
         ' </div>' +
-        ' <div class="box2" flex="50">' +
+        ' <div class="box2 flex-50" flex="50">' +
         '   <label></label>' +
         '   <select multiple="multiple"></select>' +
         '   <span class="info-container">' +
